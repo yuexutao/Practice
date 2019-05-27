@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <input id="src" type="file"/> <!-- input you want to read from (src) -->
+        <img id="target"/> <!-- image you want to display it (target) -->
+
+        <script>
+                function showImage(src,target) {
+                var fr=new FileReader();
+                // when image is loaded, set the src of the image where you want to display it
+                fr.onload = function(e) { target.src = this.result; };
+                src.addEventListener("change",function() {
+                    // fill fr with image data    
+                    fr.readAsDataURL(src.files[0]);
+                });
+                }
+    
+                var src = document.getElementById("src");
+                var target = document.getElementById("target");
+                showImage(src,target);
+            </script>
+    </body>
+</html>
